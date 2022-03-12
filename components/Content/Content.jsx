@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Book from "../Book/Book";
 import styles from "./Content.module.scss";
-
-const books = [
-    { id: Math.random(), title: "A volta dos que não foram", author: "David Brook", excerpt: "Um livro que conta a história da volta dos que não foram", published_at: new Date() }
-]
+import { api } from "../../services/api";
 
 const Content = () => {
+    const [books, setBooks] = useState([]);
+
+    useEffect(async () => {
+        try {
+            const res = await api.get("/books");
+            setBooks(res.data);
+        }
+        
+        catch(err) {
+            console.log(err);
+        }
+    }, []);
+
     return (
         <div className={styles.container}>
             <main className={styles.main}>
