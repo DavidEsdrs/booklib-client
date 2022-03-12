@@ -1,0 +1,87 @@
+.container {
+    position: relative;
+    border: 1px solid orange;
+    border-radius: 0.825rem;
+    padding: 1rem;
+
+    .main_info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+
+        margin-bottom: 1rem;
+
+        h1 {
+            position: relative;
+            font-size: x-large;
+
+            span.published_at {
+                position: absolute;
+                left: -5rem;
+                height: 100%;
+
+                display: flex;
+                align-items: center;
+
+                padding: 0 .5rem;
+
+                border-radius: .3rem;
+
+                background-color: orange;
+
+                font-size: medium;
+            }
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            background-color: black;
+            height: 100%;
+            width: 2px;
+            margin-left: 1.5rem;
+        }
+
+        h2 {
+            position: relative;
+            color: orange;
+        }
+    }
+
+    .more_info {
+        display: flex;
+        justify-content: center;
+    }
+
+    .read_book {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: 3rem;
+        height: 90%;
+
+        margin: .35rem;
+
+        background-color: white;
+        color: orange;
+
+        padding: .5rem 1rem;
+
+        border: 1px solid orange;
+        border-radius: .825rem;
+
+        font-size: medium;
+
+        transition: background .2s, width .2s;
+
+        &:hover {
+            cursor: pointer;
+            width: 4rem;
+
+            background-color: orange;
+            color: white;
+        }
+    }
+}
