@@ -1,10 +1,10 @@
-import styles from "./AddBookButton.module.scss";
-
-import React from 'react'
+import styles from "./AddBook.module.scss";
+import React, { useContext, useState } from 'react'
+import { AddBookContext } from "../AddBookContext/AddBookContext";
 
 const AddBookButton = () => {
     const [activeBtn, setActiveBtn] = useState(false);
-    const [formActive, setFormActive] = useState(false);
+    const { store: { formActive, setFormActive } } = useContext(AddBookContext);
 
     return (
         <div>
