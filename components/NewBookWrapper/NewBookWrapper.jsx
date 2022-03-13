@@ -48,7 +48,9 @@ const NewBookWrapper = () => {
                 <textarea onChange={e => setContent(e.target.value)} className={styles.book_content} name="" id="" cols="30" rows="10" placeholder="Conteúdo"></textarea>
 
                 <button className={styles.add_book} type="submit">
-                    Adicionar livro
+                    <strong>
+                        Adicionar livro
+                    </strong>
                 </button>
             </form>
         </div>

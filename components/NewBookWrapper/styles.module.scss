@@ -16,7 +16,7 @@
         grid-template-areas: 
         "info-form button"
         "textarea textarea";
-        gap: .5rem;
+        gap: .5rem .4rem;
 
         .info_form {
             grid-area: info-form;
@@ -24,8 +24,6 @@
             flex-direction: row;
             gap: .5rem;
 
-            margin-right: 1rem;
-    
             .book_published_at {
                 padding-left: .4rem;
     
@@ -54,6 +52,18 @@
 
         .add_book {
             grid-area: button;
+
+            border-radius: .2rem;
+
+            border: none;
+
+            transition: background .2s;
+            
+            &:hover {
+                cursor: pointer;
+                background-color: orange;
+                color: white;
+            }
         }
     }
 
