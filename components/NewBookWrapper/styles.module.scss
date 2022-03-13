@@ -9,7 +9,11 @@
 
     padding: 1rem;
 
-    form {
+    form.deactivated {
+        display: none;
+    }
+
+    form.active {
         width: 100%;
 
         display: grid;
@@ -37,6 +41,8 @@
 
         textarea {
             grid-area: textarea;
+
+            width: 100%;
 
             background-color: rgb(238, 238, 238);
             border: none;
@@ -77,4 +83,47 @@
 
         font-size: large;
     }
+}
+
+.initial_add_book {
+    background-color: orange;
+    border: none;
+    width: 100%;
+    padding: 1rem;
+    font-size: large;
+    border-radius: .825rem;
+
+    transition: filter .2s;
+
+    .initial_add_book_text {
+        position: relative;
+    }
+    
+    .initial_add_book_text::after {
+        content: ' ';
+        position: absolute;
+        top: 100%;
+        left: 0;
+    
+        height: 2px;
+        width: 0%;
+    
+        background-color: black;
+
+        transition: width .2s;
+    }
+    
+    .initial_add_book_text.active::after {
+        width: 100%;
+    }
+
+    &:hover {
+        cursor: pointer;
+        filter: contrast(1.2);
+    }
+
+}
+
+.initial_add_book.deactivated {
+    display: none;
 }

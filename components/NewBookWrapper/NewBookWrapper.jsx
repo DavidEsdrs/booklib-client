@@ -12,6 +12,9 @@ const NewBookWrapper = () => {
     const [published_at, setPublishedAt] = useState(new Date());
     const [content, setContent] = useState("");
 
+    const [activeBtn, setActiveBtn] = useState(false);
+    const [formActive, setFormActive] = useState(false);
+
     const clearValues = () => {
         setTitle("");
         setAuthor("");
@@ -29,7 +32,17 @@ const NewBookWrapper = () => {
 
     return (
         <div className={styles.container}>
-            <form onSubmit={onSubmit}>
+            <button 
+                className={`${styles.initial_add_book} ${formActive ? styles.deactivated : styles.active}`}
+                onMouseEnter={() => setActiveBtn(true)} 
+                onMouseLeave={() => setActiveBtn(false)} 
+                onClick={() => setFormActive(true)}
+            >
+                <strong className={`${styles.initial_add_book_text} ${activeBtn ? styles.active : styles.deactivated}`}>
+                    Adicionar livro à biblioteca
+                </strong>
+            </button>
+            <form className={`${formActive ? styles.active : styles.deactivated}`} onSubmit={onSubmit}>
                 <div className={styles.info_form}>
                     <label htmlFor="book_title">
                         <input onChange={e => setTitle(e.target.value)} id="book_title" className={styles.input} type="text" placeholder="Título" />
