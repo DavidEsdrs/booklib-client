@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react'
-import { api } from "../../services/api";
 import styles from "./styles.module.scss";
+import { api } from "../../services/api";
 import { BooksContext } from "../BooksContext/BooksContext";
 import AddBookButton from "../AddBook/AddBookButton";
-import AddBookContextProvider from "../AddBookContext/AddBookContext";
 import { AddBookContext } from "../AddBookContext/AddBookContext";
 
 const NewBookWrapper = () => {
-    const { state: { books, setBooks } } = useContext(BooksContext);
+    const { store: { books, setBooks } } = useContext(BooksContext);
 
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
@@ -34,9 +33,7 @@ const NewBookWrapper = () => {
 
     return (
         <div className={styles.container}>
-            <AddBookContextProvider>
-                <AddBookButton />
-            </AddBookContextProvider>
+            <AddBookButton />
             <form className={`${formActive ? styles.active : styles.deactivated}`} onSubmit={onSubmit}>
                 <div className={styles.info_form}>
                     <label htmlFor="book_title">
