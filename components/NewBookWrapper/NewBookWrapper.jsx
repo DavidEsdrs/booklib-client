@@ -2,6 +2,7 @@ import React, { useContext, useRef, useState } from 'react'
 import { api } from "../../services/api";
 import styles from "./styles.module.scss";
 import { BooksContext } from "../BooksContext/BooksContext";
+import AddBookButton from "../AddBook/AddBookButton";
 
 const NewBookWrapper = () => {
     const { state: { books, setBooks } } = useContext(BooksContext);
@@ -11,9 +12,6 @@ const NewBookWrapper = () => {
     const [excerpt, setExcerpt] = useState("");
     const [published_at, setPublishedAt] = useState(new Date());
     const [content, setContent] = useState("");
-
-    const [activeBtn, setActiveBtn] = useState(false);
-    const [formActive, setFormActive] = useState(false);
 
     const clearValues = () => {
         setTitle("");
@@ -32,16 +30,7 @@ const NewBookWrapper = () => {
 
     return (
         <div className={styles.container}>
-            <button 
-                className={`${styles.initial_add_book} ${formActive ? styles.deactivated : styles.active}`}
-                onMouseEnter={() => setActiveBtn(true)} 
-                onMouseLeave={() => setActiveBtn(false)} 
-                onClick={() => setFormActive(true)}
-            >
-                <strong className={`${styles.initial_add_book_text} ${activeBtn ? styles.active : styles.deactivated}`}>
-                    Adicionar livro à biblioteca
-                </strong>
-            </button>
+            <AddBookButton />
             <form className={`${formActive ? styles.active : styles.deactivated}`} onSubmit={onSubmit}>
                 <div className={styles.info_form}>
                     <label htmlFor="book_title">
