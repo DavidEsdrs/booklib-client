@@ -14,7 +14,7 @@ export default ({ children }) => {
     }, []);
 
     const store = {
-        state: { books, setBooks }
+        store: { books, setBooks }
     }
 
     return <BooksContext.Provider value={store}>{children}</BooksContext.Provider>
