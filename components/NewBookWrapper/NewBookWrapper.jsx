@@ -22,7 +22,7 @@ const NewBookWrapper = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const book = await api.post("/books", { title, author, excerpt, content, published_at });
+        const { book } = await api.post("/books", { title, author, excerpt, content, published_at });
         clearValues();
         setBooks([book, ...books]);
     }
