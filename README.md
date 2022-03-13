@@ -26,3 +26,7 @@ React project made with React, Next and Sass and consumes a Rest Api
 - axios
 - next
 - moment
+
+<h2 align="center"> Screenshots </h2>
+
+![Screenpage](./assets/index.png)
