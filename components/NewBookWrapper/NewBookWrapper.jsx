@@ -1,8 +1,10 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { api } from "../../services/api";
 import styles from "./styles.module.scss";
 import { BooksContext } from "../BooksContext/BooksContext";
 import AddBookButton from "../AddBook/AddBookButton";
+import AddBookContextProvider from "../AddBookContext/AddBookContext";
+import { AddBookContext } from "../AddBookContext/AddBookContext";
 
 const NewBookWrapper = () => {
     const { state: { books, setBooks } } = useContext(BooksContext);
@@ -12,6 +14,8 @@ const NewBookWrapper = () => {
     const [excerpt, setExcerpt] = useState("");
     const [published_at, setPublishedAt] = useState(new Date());
     const [content, setContent] = useState("");
+    
+    const { store: { formActive } } = useContext(AddBookContext);
 
     const clearValues = () => {
         setTitle("");
@@ -23,14 +27,16 @@ const NewBookWrapper = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const { book } = await api.post("/books", { title, author, excerpt, content, published_at });
+        const { data: book } = await api.post("/books", { title, author, excerpt, content, published_at });
         clearValues();
         setBooks([book, ...books]);
     }
 
     return (
         <div className={styles.container}>
-            <AddBookButton />
+            <AddBookContextProvider>
+                <AddBookButton />
+            </AddBookContextProvider>
             <form className={`${formActive ? styles.active : styles.deactivated}`} onSubmit={onSubmit}>
                 <div className={styles.info_form}>
                     <label htmlFor="book_title">
