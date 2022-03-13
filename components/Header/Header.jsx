@@ -1,9 +1,10 @@
 import React from 'react'
+import styles from "./Header.module.scss";
 
 const Header = () => {
     return (
-        <header>
-            
+        <header className={styles.container}>
+            <h1>Booklib</h1>
         </header>
     )
 }
